@@ -1,0 +1,65 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+
+.login-register {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding-bottom: 5%;
+}
+
+.card-login {
+	padding: 20px;
+}
+
+.tab-login {
+	width: 350px;
+}
+
+.validation-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #f44336;
+	font-size: 12px;
+}
+
+.validation-text::before {
+	content: ".";
+	visibility: hidden;
+}
+
+.BTN-login-register {
+	background-color: #eeeeee;
+	border-width: 2px;
+	border-color: #5b5b5b;
+	border-style: solid;
+	color: #5b5b5b;
+	padding: 10px;
+	border-radius: 8px;
+	font-weight: bold;
+	width: 100%;
+}
+
+.BTN-login-register:hover {
+	background-color: #5b5b5b;
+	border-width: 2px;
+	border-color: #5b5b5b;
+	border-style: solid;
+	color: #eeeeee;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+	color: #bcbcbc;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:hover {
+	color: #424242;
+}
