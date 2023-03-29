@@ -1,4 +1,5 @@
 const errorHandler = (err, req, res, next) => {
+	console.log(err);
 	let code = 500;
 	let message = "Internal Server Error";
 	if (err.name === "SequelizeValidationError") {
@@ -17,7 +18,11 @@ const errorHandler = (err, req, res, next) => {
 	} else if (err.name == "invalidLogin") {
 		code = 401;
 		message = "Invalid Email or Password";
-	} else if (err.name === "invalid_token" || err.name === "JsonWebTokenError") {
+	} else if (
+		err.name === "invalid_token" ||
+		err.name === "JsonWebTokenError" ||
+		err.name === "SequelizeDatabaseError"
+	) {
 		code = 401;
 		message = "Invalid token";
 	}
