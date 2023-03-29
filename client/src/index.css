@@ -134,3 +134,12 @@
 	justify-content: end;
 	align-items: center;
 }
+
+.detail-back-btn {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.detail-card {
+	margin-bottom: 50px;
+}
