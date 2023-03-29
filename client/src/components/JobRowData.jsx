@@ -1,6 +1,8 @@
 import { Col, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function JobRowData(job) {
+	const navigate = useNavigate();
 	const time = (date) => {
 		const oldDate = new Date(date);
 		const newDate = new Date() - oldDate;
@@ -21,9 +23,12 @@ export default function JobRowData(job) {
 			return `${hour} hour`;
 		}
 	};
+	const navigateToProductDetail = () => {
+		navigate(`/job-detail/${job.job.id}`);
+	};
 	return (
 		<>
-			<Row>
+			<Row onClick={navigateToProductDetail} style={{ cursor: "pointer" }}>
 				<Row className="mb-3">
 					<Col>
 						<Row className="job-title">

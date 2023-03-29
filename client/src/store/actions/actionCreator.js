@@ -71,7 +71,6 @@ export const fetchJobs = (userInput, page) => {
 				};
 			}
 			const { data } = await axios(options);
-			console.log(data, "XXXXXX");
 			dispatch(fetchJobsSuccess(data));
 		} catch (error) {
 			console.log(error);
@@ -86,11 +85,17 @@ export const fetchJobSuccess = (data) => {
 	};
 };
 
-export const fetchJob = () => {
+export const fetchJob = (id) => {
 	return async (dispatch) => {
 		try {
-			//GET Job
-			// dispatch(fetchJobSuccess(data));
+			const { data } = await axios({
+				method: "GET",
+				url: `http://localhost:3000/jobs/${id}`,
+				headers: {
+					access_token: localStorage.access_token,
+				},
+			});
+			dispatch(fetchJobSuccess(data));
 		} catch (error) {
 			console.log(error);
 		}
