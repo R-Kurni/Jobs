@@ -3,6 +3,7 @@
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18px;
+	color: #5b5b5b;
 }
 
 .login-register {
@@ -62,4 +63,74 @@
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link:hover {
 	color: #424242;
+}
+
+.NavBar-BG {
+	background-color: #424242;
+}
+
+.NavBar {
+	display: flex;
+	justify-content: space-between;
+	height: 50px;
+}
+
+.nav-text {
+	color: white;
+}
+
+.search {
+	padding-top: 25px;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.BTN-Search {
+	background-color: #eeeeee;
+	border-width: 2px;
+	border-color: #5b5b5b;
+	border-style: solid;
+	color: #5b5b5b;
+	padding: 2px 0px;
+	border-radius: 8px;
+	font-weight: bold;
+	text-align: center;
+	width: 70%;
+}
+
+.BTN-Search:hover {
+	background-color: #5b5b5b;
+	border-color: #5b5b5b;
+	color: #eeeeee;
+}
+
+.Title {
+	font-weight: bolder;
+}
+
+.job-title {
+	font-weight: bolder;
+}
+
+.job-row {
+	display: flex;
+}
+
+.job-company {
+	color: #bcbcbc;
+}
+
+.job-full-time {
+	font-weight: bolder;
+	color: #44cd06;
+}
+
+.job-end {
+	display: flex;
+	justify-content: end;
+	align-items: center;
 }

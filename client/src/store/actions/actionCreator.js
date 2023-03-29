@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const register = (formRegister) => {
 	return async () => {
 		try {
@@ -44,11 +46,33 @@ export const fetchJobsSuccess = (data) => {
 	};
 };
 
-export const fetchJobs = () => {
+export const fetchJobs = (userInput, page) => {
 	return async (dispatch) => {
 		try {
-			//GET Jobs
-			// dispatch(fetchJobsSuccess(data));
+			const options = {
+				method: "GET",
+				url: `http://localhost:3000/jobs/`,
+				headers: {
+					access_token: localStorage.access_token,
+				},
+			};
+			if (typeof userInput !== "undefined") {
+				options.params = {
+					...options.params,
+					description: userInput.description,
+					location: userInput.location,
+					full_time: userInput.full_time,
+				};
+			}
+			if (typeof page !== "undefined") {
+				options.params = {
+					...options.params,
+					page,
+				};
+			}
+			const { data } = await axios(options);
+			console.log(data, "XXXXXX");
+			dispatch(fetchJobsSuccess(data));
 		} catch (error) {
 			console.log(error);
 		}

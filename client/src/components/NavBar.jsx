@@ -1,16 +1,22 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+	const navigate = useNavigate();
+	const handleLogout = () => {
+		localStorage.clear();
+		navigate("/login");
+	};
 	return (
 		<>
-			<Navbar bg="light" variant="light">
-				<Container>
-					<Navbar.Brand href="#home">Navbar</Navbar.Brand>
-					<Nav className="me-auto">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#features">Features</Nav.Link>
-						<Nav.Link href="#pricing">Pricing</Nav.Link>
-					</Nav>
+			<Navbar className="NavBar-BG" sticky="top">
+				<Container className="NavBar">
+					<Link to="/" className="nav-link">
+						<b className="nav-text">JOBS</b>
+					</Link>
+					<Link to="/login" className="nav-link" onClick={handleLogout}>
+						<div className="nav-text">LOGOUT</div>
+					</Link>
 				</Container>
 			</Navbar>
 		</>
