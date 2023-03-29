@@ -25,6 +25,9 @@ const errorHandler = (err, req, res, next) => {
 	) {
 		code = 401;
 		message = "Invalid token";
+	} else if (err.name === "Product not found") {
+		code = 404;
+		message = "Product not found";
 	}
 	res.status(code).json({ message });
 };
