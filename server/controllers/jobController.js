@@ -4,7 +4,6 @@ class jobController {
 	static async getJobs(req, res, next) {
 		try {
 			const { description, location, full_time, page } = req.query;
-			console.log(req.params);
 			let start = (page - 1) * 5;
 			let end = 5 * page;
 			const options = {

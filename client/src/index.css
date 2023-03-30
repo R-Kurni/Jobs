@@ -135,6 +135,13 @@
 	align-items: center;
 }
 
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
 .detail-back-btn {
 	padding-top: 25px;
 	padding-bottom: 25px;
@@ -142,4 +149,10 @@
 
 .detail-card {
 	margin-bottom: 50px;
+}
+
+.not-found-content {
+	display: flex;
+	justify-content: center;
+	padding: 10%;
 }

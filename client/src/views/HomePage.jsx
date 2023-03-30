@@ -1,6 +1,6 @@
-import { Container, Col, Row, Form, Card } from "react-bootstrap";
+import { Container, Col, Row, Form, Card, Pagination } from "react-bootstrap";
 import JobRowData from "../components/JobRowData";
-import PaginationJobs from "../components/PaginationJobs";
+// import PaginationJobs from "../components/PaginationJobs";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchJobs } from "../store/actions/actionCreator";
@@ -10,7 +10,7 @@ export default function HomePage() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [currentPage, setCurrentPage] = useState(1);
-	const [totalPage, setTotalPage] = useState(0);
+	const [totalPage, setTotalPage] = useState(1);
 	const { jobs } = useSelector((state) => {
 		return state.jobs;
 	});
@@ -37,10 +37,41 @@ export default function HomePage() {
 			navigate("/");
 		});
 	};
+	const pageNumbers = [];
+	for (let number = 1; number <= totalPage; number++) {
+		pageNumbers.push(
+			<Pagination.Item
+				key={number}
+				active={number === currentPage}
+				onClick={() => setCurrentPage(number)}
+			>
+				{number}
+			</Pagination.Item>
+		);
+	}
+	const firstPage = () => {
+		setCurrentPage(1);
+	};
+	const prevPage = () => {
+		if (currentPage > 1) {
+			setCurrentPage(currentPage - 1);
+		}
+	};
+	const nextPage = () => {
+		if (currentPage < totalPage) {
+			setCurrentPage(currentPage + 1);
+		}
+	};
+	const lastPage = () => {
+		setCurrentPage(totalPage);
+	};
 	useEffect(() => {
 		dispatch(fetchJobs(userInput, currentPage));
 		setCurrentPage(jobs.currentPage);
 		setTotalPage(jobs.totalPage);
+	}, []);
+	useEffect(() => {
+		dispatch(fetchJobs(userInput, currentPage));
 	}, [currentPage]);
 	return (
 		<>
@@ -108,19 +139,19 @@ export default function HomePage() {
 					return <JobRowData job={jobList} key={idx} />;
 				})}
 				<Row>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							marginTop: "20px",
-							alignItems: "center",
-						}}
-					>
-						<PaginationJobs
+					<div className="pagination">
+						{/* <PaginationJobs
 							currentPage={currentPage}
 							totalPage={totalPage}
 							setCurrentPage={setCurrentPage}
-						/>
+						/> */}
+						<Pagination>
+							<Pagination.First onClick={firstPage} />
+							<Pagination.Prev onClick={prevPage} />
+							{pageNumbers}
+							<Pagination.Next onClick={nextPage} />
+							<Pagination.Last onClick={lastPage} />
+						</Pagination>
 					</div>
 				</Row>
 			</Container>
