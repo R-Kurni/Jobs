@@ -22,7 +22,7 @@ function PaginationJobs({ currentPage, totalPage, setCurrentPage }) {
 		setCurrentPage(1);
 	};
 	return (
-		<div style={{ marginTop: "5px", marginBottom: "5px" }}>
+		<div>
 			<Pagination>
 				<Pagination.First onClick={firstPage} />
 				<Pagination.Prev onClick={prevPage} />
